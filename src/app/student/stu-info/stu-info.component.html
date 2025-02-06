@@ -1,0 +1,146 @@
+<div class="container mt-4">
+  <!-- <h2 class="text-center">json api</h2> -->
+
+  <!-- Button trigger modal -->
+  <button type="button" mat-flat-button data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="openAddModel()">
+    Add User +
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{ isEditMode ? 'Add User' : 'Update User'}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <form class="example-form" #formData="ngForm"
+            (ngSubmit)=" isEditMode ? addUser(formData.value) : updateUser(formData.value)">
+
+            <input type="hidden" name="id" [(ngModel)]="id" />
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Name</mat-label>
+              <input matInput [(ngModel)]="name" name="name" required>
+            </mat-form-field><br>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Email</mat-label>
+              <div style="display: flex;">
+                <input matInput [(ngModel)]="email" name="email" required>
+                <button type="button" class="btn btn-warning" (click)="getEmail(formData.value)">check</button>
+              </div>
+            </mat-form-field><br>
+
+            <div>
+              <ng-multiselect-dropdown name="cities" [placeholder]="'Select Cities'" [settings]="dropdownSettings"
+                [data]="dropdownList" [(ngModel)]="cities" (onSelect)="onItemSelect($event)"
+                (onSelectAll)="onSelectAll($event)" required>
+              </ng-multiselect-dropdown>
+            </div><br>
+
+            <input type="file" name="profilePhoto" (change)="onFileSelected($event)"> <!--$event this is a object pass to the function-->
+
+            <!-- Image Preview -->
+            <div *ngIf="profilePhoto">
+              <img [src]="profilePhoto" alt="Profile Preview" height="70px" width="80px" class="profile-preview">
+            </div>
+
+            <button type="button">Upload Profile</button><br><br>
+
+            <button (click)="uploadProfile()" mat-flat-button data-bs-dismiss="modal" [disabled]="formData.invalid">{{
+              isEditMode ? 'Add User' : 'Update
+              User'}}</button>
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" mat-flat-button data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><br>
+
+<div class="container">
+
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+    <ng-container matColumnDef="Id">
+      <th mat-header-cell *matHeaderCellDef>No.</th>
+      <td mat-cell *matCellDef="let user"> {{ user.id }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let user"> {{ user.name }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Email">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let user"> {{ user.email }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Action">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let user">
+        <button mat-icon-button color="primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+          (click)="editUser(user)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteUser(user.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button data-bs-toggle="modal" data-bs-target="#myModal" (click)="viewUser(user)">
+          <mat-icon>visibility</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+
+</div>
+
+<!-- <div class="container mt-3">
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+    User Details
+  </button>
+</div> -->
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">User Details</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <p><strong>Id : </strong>{{ id }}</p>
+        <p><strong>Name : </strong>{{ name }}</p>
+        <p><strong>Email : </strong>{{ email }}</p>
+        <p><strong>Cities : </strong>{{ cities }}</p>
+        <p><strong>Profile Photo: </strong>{{ profilePhoto }}</p>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" mat-flat-button class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

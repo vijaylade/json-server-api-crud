@@ -1,0 +1,130 @@
+{
+  "student": [
+    {
+      "id": 1,
+      "name": "vijay ",
+      "email": "vijaylade@gmail.com",
+      "cities": [
+        {
+          "item_id": 2,
+          "item_text": "Pune"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "shubham deshmukh",
+      "email": "shubhamdeshmukh@walstarmedia.com",
+      "cities": [
+        {
+          "item_id": 1,
+          "item_text": "Mumbai"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "abhiss",
+      "email": "abhiss@gmail.com",
+      "cities": [
+        {
+          "item_id": 2,
+          "item_text": "Pune"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "aniket",
+      "email": "aniket@gmail.com",
+      "cities": [
+        {
+          "item_id": 2,
+          "item_text": "Pune"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "pratik",
+      "email": "pratik@gmail.com",
+      "cities": [
+        {
+          "item_id": 1,
+          "item_text": "Mumbai"
+        },
+        {
+          "item_id": 2,
+          "item_text": "Pune"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "aditya",
+      "email": "aditya@gmail.com",
+      "cities": [
+        {
+          "item_id": 1,
+          "item_text": "Mumbai"
+        },
+        {
+          "item_id": 2,
+          "item_text": "Pune"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "akash",
+      "email": "akash@gmail.com",
+      "cities": [
+        {
+          "item_id": 2,
+          "item_text": "Pune"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "abhi",
+      "email": "abhi@gmail.com",
+      "cities": [
+        {
+          "item_id": 1,
+          "item_text": "Mumbai"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "abc",
+      "email": "abc@gmail.com",
+      "cities": [
+        {
+          "item_id": 1,
+          "item_text": "Mumbai"
+        },
+        {
+          "item_id": 2,
+          "item_text": "Pune"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "xyz",
+      "email": "xyz@gmail.com",
+      "cities": [
+        {
+          "item_id": 1,
+          "item_text": "Mumbai"
+        },
+        {
+          "item_id": 2,
+          "item_text": "Pune"
+        }
+      ]
+    }
+  ]
+}
